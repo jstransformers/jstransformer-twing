@@ -1,22 +1,21 @@
 'use strict'
 
-const Twing = require('twing');
+const Twing = require('twing')
 
 exports.name = 'twing'
 exports.inputFormats = ['twing', 'twig']
 exports.outputFormat = 'html'
 
 exports.renderFileAsync = async function (filename, options, locals) {
-    // Construct the Twig options.
-    options = options || {}
-    options.data = str
-    if ('filename' in options && !('path' in options)) {
-      options.path = options.filename
-    }
+  // Construct the Twig options.
+  options = options || {}
+  if ('filename' in options && !('path' in options)) {
+    options.path = options.filename
+  }
 
-    let loader = new Twing.TwingLoaderFilesystem(options.root)
-    let twing = new Twing.TwingEnvironment(loader);
-    let ouput = await twing.render(filename, locals);
+  const loader = new Twing.TwingLoaderFilesystem(options.root)
+  const twing = new Twing.TwingEnvironment(loader)
+  const output = await twing.render(filename, locals)
 
-    return output
+  return output
 }
