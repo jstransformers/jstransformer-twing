@@ -1,5 +1,5 @@
 # Changelog
 
-## v0.0.1: Unreleased
+## v0.0.1: 2018-02-15
 
 - Initial release
