@@ -6,6 +6,10 @@ exports.name = 'twing'
 exports.inputFormats = ['twing', 'twig']
 exports.outputFormat = 'html'
 
+
+
+
+
 exports.renderFileAsync = async function (filename, options, locals) {
   // Construct the Twig options.
   options = options || {}
