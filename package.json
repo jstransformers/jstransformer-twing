@@ -30,6 +30,6 @@
   },
   "license": "MIT",
   "dependencies": {
-    "twing": "^1.0.0"
+    "twing": "^2.0.0"
   }
 }
