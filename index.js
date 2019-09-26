@@ -1,25 +1,29 @@
 'use strict'
 
-const Twing = require('twing')
+const {TwingEnvironment, TwingLoaderFilesystem} = require('twing')
 
 exports.name = 'twing'
 exports.inputFormats = ['twing', 'twig']
 exports.outputFormat = 'html'
 
-
-
-
-
-exports.renderFileAsync = async function (filename, options, locals) {
+exports.renderFile = function (filename, options, locals) {
   // Construct the Twig options.
   options = options || {}
   if ('filename' in options && !('path' in options)) {
     options.path = options.filename
   }
 
-  const loader = new Twing.TwingLoaderFilesystem(options.root)
-  const twing = new Twing.TwingEnvironment(loader)
-  const output = await twing.render(filename, locals)
+  if (!options.root) {
+    options.root = process.cwd()
+  }
+
+  // Initialize Twing
+  const loader = new TwingLoaderFilesystem(options.root)
+  const twing = new TwingEnvironment(loader)
+
+  // Remove the root from the filename if it's present.
+  filename = filename.replace(options.root, '')
+  const output = twing.render(filename, locals)
 
   return output
 }
