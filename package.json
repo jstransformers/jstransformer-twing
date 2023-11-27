@@ -29,6 +29,6 @@
   },
   "license": "MIT",
   "dependencies": {
-    "twing": "^4.0.0"
+    "twing": "^5.1.5"
   }
 }
